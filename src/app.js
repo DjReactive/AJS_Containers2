@@ -1,18 +1,14 @@
-export class Team {
-  constructor() {
-    this.members = new Set();
+export class ErrorRepository {
+  constructor () {
+    this.errors = new Map();
   }
 
-  add (character) {
-    if (!this.members.has(character)) this.members.add(character);
-    else throw new Error ("Такой персонаж уже имеется в команде");
+  add (code, errorMsg) {
+    this.errors.set(code, errorMsg);
   }
 
-  addAll (...objs) {
-    objs.forEach(obj => this.members.add(obj));
-  }
-
-  toArray () {
-    return [this.members];
+  translate (code) {
+    if (!this.errors.has(code)) throw new Error("Unknown error");
+    return this.errors.get(code);
   }
 }
