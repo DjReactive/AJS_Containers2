@@ -1,4 +1,4 @@
-import {ErrorRepository} from './app.js';
+import ErrorRepository from './app';
 
 const err = new ErrorRepository();
 err.add(100, 'Error 100');
